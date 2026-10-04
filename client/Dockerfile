@@ -1,11 +1,9 @@
-# Nginx temel imajını kullan
-FROM nginx:alpine
+# Nginx'in resmi imajını baz alıyoruz
+FROM nginx:latest
 
-# HTML, CSS ve JS dosyalarını Nginx'in servis ettiği klasöre kopyala
-COPY . /usr/share/nginx/html
+# Frontend dosyalarını /usr/share/nginx/html dizinine kopyalıyoruz
+# Bu dizin, Nginx'in varsayılan olarak statik dosyaları sunduğu dizindir
+COPY ./LibraryAppV2-frontend/client /usr/share/nginx/html
 
-# Nginx portunu aç
+# Nginx'i dinlemesi gereken portu belirtiyoruz (80)
 EXPOSE 80
-
-# Nginx başlat
-CMD ["nginx", "-g", "daemon off;"]
